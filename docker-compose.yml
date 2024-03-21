@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  nasa:
+    image: nasa_dev
+    container_name: nasa_dev
+    privileged: true
+      #cap_add:
+      #  - SYS_NICE
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ./lsm9ds1_driver:/home/niels/cFS/apps/lsm9ds1_driver
+    environment:
+      - DISPLAY=${DISPLAY}
+    network_mode: host
+    stdin_open: true
+    tty: true
